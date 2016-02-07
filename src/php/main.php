@@ -59,6 +59,8 @@ public static $authed = array();
                $this->getLogger()->info('CANT CONNECT!! [' . $this->mysqli->connect_error . ']');
 		} else {
                $this->getLogger()->info('Successfully connected to database ');
+                }
          }
-
+     
+         }
 ?>

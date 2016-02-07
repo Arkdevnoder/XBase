@@ -36,14 +36,23 @@ class main extends PluginBase implements Listener {
 public static $authed = array();
 public $mysqli;
             
-         public function onEnable() {
+      public function onEnable() {
            $this->getServer()->getPluginManager()->registerEvents($this, $this);
            $this->mysqli = new \mysqli("127.0.0.1", "user", "password", "table");
            if($this->mysqli->connect_errno > 0){
-               $this->getLogger()->info('CANT CONNECT!! [' . $this->mysqli->connect_error . ']');
-		} else {
-               $this->getLogger()->info('Successfully connected to database ');
+            $this->getLogger()->info('CANT CONNECT!! [' . $this->mysqli->connect_error . ']');
+         	} else {
+                $this->getLogger()->info('Successfully connected to database ');
                 }
+         }
+          public function onJoin(PlayerJoinEvent $event){
+               $playerName = $event->getPlayer()->getName();
+               $checking = in_array($playerName, $this->authed);
+               if($checking == 1){
+               //success TO DO!
+               } else {
+               $event->setCancelled();
+               }
          }
      
          }

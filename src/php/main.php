@@ -49,9 +49,16 @@ use pocketmine\event\player\PlayerToggleSprintEvent;
 use pocketmine\event\player\PlayerPreLoginEvent;
 
 class main extends PluginBase implements Listener {
+
+public static $authed = array();
             
          public function onEnable() {
            $this->getServer()->getPluginManager()->registerEvents($this, $this);
+           $this->mysqli = new \mysqli("127.0.0.1", "user", "password", "table");
+           if($this->mysqli->connect_errno > 0){
+               $this->getLogger()->info('CANT CONNECT!! [' . $this->mysqli->connect_error . ']');
+		} else {
+               $this->getLogger()->info('Successfully connected to database ');
          }
 
 ?>

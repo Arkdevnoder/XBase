@@ -49,6 +49,9 @@ use pocketmine\event\player\PlayerToggleSprintEvent;
 use pocketmine\event\player\PlayerPreLoginEvent;
 
 class main extends PluginBase implements Listener {
-}
+            
+         public function onEnable() {
+           $this->getServer()->getPluginManager()->registerEvents($this, $this);
+         }
 
 ?>
